@@ -109,4 +109,5 @@ temp/
 
 # End of https://www.gitignore.io/api/node
 
-lib/
+# KEEP LIB COMMITTED FOR SIMPLE DEPLOYMENT
+# lib/
