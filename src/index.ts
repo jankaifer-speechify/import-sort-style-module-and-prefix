@@ -1,5 +1,4 @@
 // Adapted from https://github.com/renke/import-sort/blob/83422cef255b7e0aed47b02ae6ff2cb3e22b255c/packages/import-sort-style-module/src/index.ts
-import { cosmiconfigSync } from "cosmiconfig";
 import { IMatcherFunction, IStyleAPI, IStyleItem } from "import-sort-style";
 
 export enum PrefixGroupsPosition {
@@ -20,9 +19,33 @@ let resolvedConfig: Config | undefined;
 
 const getConfig = (): Config => {
   if (resolvedConfig === undefined) {
-    const config = cosmiconfigSync("importSortPrefix", {
-      packageProp: "importSortPrefix"
-    }).search();
+    // CHANGE START
+    const config = {
+      isEmpty: false,
+      config: {
+        position: PrefixGroupsPosition.beforeRelative,
+        // This is our hardcoded config
+        groupings: [
+          [
+            //
+            "assets/",
+            "components/",
+            "config/",
+            "css/",
+            "hooks/",
+            "interfaces/",
+            "lib/",
+            "modules/",
+            "pages/",
+            "store/",
+            "storybook/",
+            "utils/",
+            "wrappers/"
+          ]
+        ]
+      }
+    };
+    // CHANGE END
 
     const defaultConfig: Config = {
       position: PrefixGroupsPosition.beforeRelative,
